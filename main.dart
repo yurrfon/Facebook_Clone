@@ -68,31 +68,108 @@ class _MyHomePageState extends State<MyHomePage> {
           scrollDirection: Axis.horizontal,
           child: Container(
             height: 160,
-            color: Colors.teal,
+            color: const Color(0xFF2F3C7E),
             child: Row(
-              children: [
-                for (int i = 0; i < 8; i++) ...{
-                  Container(
-                    height: 120,
-                    width: 80,
-                    margin: const EdgeInsets.only(left: 10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.0),
-                        color: const Color.fromARGB(255, 156, 255, 245)),
-                  ),
-                }
+              children: const [
+                container_reel(
+                    title_reel: 'Yurr Fonollera',
+                    short_desc: '1 day ago',
+                    image_reel: 'assets/images/1.jpg'),
+                container_reel(
+                    title_reel: 'Aljon Mutalib',
+                    short_desc: '1 day ago ago',
+                    image_reel: 'assets/images/2.jpg'),
+                container_reel(
+                    title_reel: 'Joshua De Guzman',
+                    short_desc: '5 years ago',
+                    image_reel: 'assets/images/3.jpg'),
+                container_reel(
+                    title_reel: 'Everyone',
+                    short_desc: '5 years ago',
+                    image_reel: 'assets/images/4.jpg'),
+                container_reel(
+                    title_reel: 'Yurr Fonollera',
+                    short_desc: '5 years ago',
+                    image_reel: 'assets/images/1.jpg'),
+                container_reel(
+                    title_reel: 'Mayor John Dalipe',
+                    short_desc: '5 years ago',
+                    image_reel: 'assets/images/5.jpg'),
+                container_reel(
+                    title_reel: 'Secretary Uy',
+                    short_desc: '5 years ago',
+                    image_reel: 'assets/images/6.jpg'),
               ],
             ),
           ),
         ),
-        const FeedItem(
-          title: 'TITLE 1',
-          description: 'THIS is the first Title!',
-          iconData: Icons.person,
-        ),
-        const FeedItem(
-            title: 'Title 2', description: 'HELLO PO SA INYONG LAHAT!')
+        Container(
+          color: Color.fromARGB(255, 250, 230, 238),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Posts',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  ),
+                ),
+                Container(
+                  child: Column(
+                    children: [
+                      const FeedItem(
+                        title:
+                            'DICT Secretary Ivan Uy talks with Zamboanga City Mayor John Dalipe',
+                        description: 'They talked about future plans for ICT',
+                        image_data: 'assets/images/5.jpg',
+                      ),
+                      const FeedItem(
+                        title:
+                            'Photo: DICT Secretary Ivan Uy and Zamboanga City Mayor John Dalipe',
+                        description: 'Congratulations!',
+                        image_data: 'assets/images/6.jpg',
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
       ]),
+    );
+  }
+}
+
+class container_reel extends StatelessWidget {
+  @override
+  const container_reel(
+      {required this.title_reel,
+      required this.short_desc,
+      required this.image_reel});
+
+  final String title_reel;
+  final String short_desc;
+  final String image_reel;
+
+  Widget build(BuildContext context) {
+    return Container(
+      height: 120,
+      width: 80,
+      margin: const EdgeInsets.only(left: 10),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.0),
+          color: Color.fromARGB(255, 253, 220, 233)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(image_reel),
+          Text(style: TextStyle(fontSize: 9), title_reel),
+          Text(style: TextStyle(fontSize: 9), short_desc),
+        ],
+      ),
     );
   }
 }
