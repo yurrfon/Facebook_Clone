@@ -5,55 +5,48 @@ class FeedItem extends StatelessWidget {
   const FeedItem({
     required this.title,
     required this.description,
-    this.iconData,
+    required this.image_data,
   });
 
   final String title;
   final String description;
-  final IconData? iconData;
+  final String image_data;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
+      height: 200,
+      color: Color.fromARGB(255, 250, 230, 238),
+      padding: EdgeInsets.all(8.0),
+      child: Column(
         children: [
-          if (iconData == null)
-            Container(
-              height: 60,
-              width: 60,
-              margin: EdgeInsets.only(top: 10, left: 10),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
-              ),
-            )
-          else
-            Container(
-              height: 60,
-              width: 60,
-              margin: EdgeInsets.only(top: 10, left: 10),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
-              ),
-              child: Icon(iconData),
+          Container(
+            decoration: BoxDecoration(
+              color: Color.fromARGB(255, 212, 212, 212),
+              borderRadius: BorderRadius.circular(12.0),
             ),
-          Column(
-            children: [
-              Container(
-                padding: EdgeInsets.only(left: 20),
-                child: Text(
-                  title,
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 20),
-                child: Text(
-                  description,
-                ),
-              ),
-            ],
+            height: 140,
+            child: FittedBox(fit: BoxFit.fill, child: Image.asset(image_data)),
+          ),
+          //Container(,alignment: Alignment.centerLeft, child: Text('Title 1')),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text(
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                title),
+          ),
+          Container(
+              alignment: Alignment.centerLeft,
+              child: Text(style: TextStyle(fontSize: 10), description)),
+          const Divider(
+            height: 1.5,
           )
         ],
       ),
     );
   }
 }
+
+/**
+ * 
+ */
